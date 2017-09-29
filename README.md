@@ -1,1 +1,1 @@
-"Batch files to help my IT job, wroted in powershell and batch" 
+"Batch files to help my IT job, written in powershell and batch" 
