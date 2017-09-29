@@ -28,15 +28,17 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0"
 :--------------------------------------
 
-copy /-y "%~dp0\PatchMyPC.exe" "C:\" 
+copy /-y "%~dp0\PatchMyPC.exe" "C:\"  ::move PatchMyPC to C drive
 
 
-wmic printer where name='\\\\pb-wappapercut1.ad.utrgv.edu\\[Find-Me-Printer] - Brownsville' call setdefaultprinter
+wmic printer where name='\\"Server"\"Printer" call setdefaultprinter ::Printer to default printer
 
 
 
-"C:\\Program Files (x86)\\Google\Chrome\\Application\\chrome.exe" --make-default-browser
+"C:\\Program Files (x86)\\Google\Chrome\\Application\\chrome.exe" --make-default-browser ::make chrome default browser
 
 
 ::rundll32 printui.dll,PrintUIEntry /dl /n "BUBLB Printer Pool" /c \\pb-wappapercut1
-RUNDLL32 printui.dll,PrintUIEntry /n "\\pb-wappapercut1.ad.utrgv.edu\BUBLB Printer Pool" /dn
+RUNDLL32 printui.dll,PrintUIEntry /n "Server\Printer" /dn ::delete BUBL printer pool from printer list
+
+wuauclt.exe /updatenow ::update computer
